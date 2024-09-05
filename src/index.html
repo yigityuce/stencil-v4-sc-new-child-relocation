@@ -9,6 +9,22 @@
     <script nomodule src="/build/stencil-v4-sc-new-child-relocation.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <div style="display: flex; flex-direction: column; gap: 32px">
+      <my-list>
+        <my-list-item>Item #1</my-list-item>
+        <my-list-item>Item #2</my-list-item>
+        <my-list-item>Item #3</my-list-item>
+        <my-list-item>Item #4</my-list-item>
+      </my-list>
+      <button onclick="addListItem()">Add New Item</button>
+    </div>
   </body>
+  <script>
+    function addListItem() {
+      const list = document.querySelector('my-list');
+      const listItem = document.createElement('my-list-item');
+      listItem.innerText = `${new Date()}`;
+      list.appendChild(listItem);
+    }
+  </script>
 </html>

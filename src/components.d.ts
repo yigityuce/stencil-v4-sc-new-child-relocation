@@ -6,56 +6,45 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface MyList {
+    }
+    interface MyListItem {
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLMyListElement extends Components.MyList, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLMyListElement: {
+        prototype: HTMLMyListElement;
+        new (): HTMLMyListElement;
+    };
+    interface HTMLMyListItemElement extends Components.MyListItem, HTMLStencilElement {
+    }
+    var HTMLMyListItemElement: {
+        prototype: HTMLMyListItemElement;
+        new (): HTMLMyListItemElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "my-list": HTMLMyListElement;
+        "my-list-item": HTMLMyListItemElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface MyList {
+    }
+    interface MyListItem {
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "my-list": MyList;
+        "my-list-item": MyListItem;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-list": LocalJSX.MyList & JSXBase.HTMLAttributes<HTMLMyListElement>;
+            "my-list-item": LocalJSX.MyListItem & JSXBase.HTMLAttributes<HTMLMyListItemElement>;
         }
     }
 }
